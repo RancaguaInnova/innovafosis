@@ -1,10 +1,10 @@
-import { GET_LIST, withDataProvider } from "react-admin";
+import { GET_LIST, withDataProvider } from 'react-admin'
 
-import GoogleMapReact from "google-map-react";
-import Marker from "./marker";
-import React from "react";
-import compose from "recompose/compose";
-import { connect } from "react-redux";
+import GoogleMapReact from 'google-map-react'
+import Marker from './marker'
+import React from 'react'
+import compose from 'recompose/compose'
+import { connect } from 'react-redux'
 
 class Live extends React.Component {
   static defaultProps = {
@@ -13,9 +13,9 @@ class Live extends React.Component {
       lng: -70.73
     },
     zoom: 14
-  };
+  }
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       Events: [],
       center: {
@@ -23,51 +23,51 @@ class Live extends React.Component {
         lng: this.props.center.lng
       },
       zoom: 14
-    };
+    }
   }
 
   componentDidMount() {
-    this.fetchData();
+    this.fetchData()
   }
   componentDidUpdate(prevProps) {
     if (this.props.version !== prevProps.version) {
-      this.fetchData();
+      this.fetchData()
     }
   }
 
   fetchData() {
-    this.fetchEvents();
+    this.fetchEvents()
   }
 
   async fetchEvents() {
-    const { dataProvider } = this.props;
+    const { dataProvider } = this.props
     try {
-      const { data: Events } = await dataProvider(GET_LIST, "Event", {
-        filter: { state: "pendiente" },
+      const { data: Events } = await dataProvider(GET_LIST, 'Event', {
+        filter: { state: 'pendiente' },
         sort: {
-          field: "date",
-          order: "DESC"
+          field: 'date',
+          order: 'DESC'
         },
         pagination: {
           page: 1,
           perPage: 50
         }
-      });
+      })
 
-      this.setState({ Events });
+      this.setState({ Events })
     } catch (e) {}
   }
   _onBoundsChange = (center, zoom) => {
-    this.setState({ center: center, zoom: zoom });
-  };
+    this.setState({ center: center, zoom: zoom })
+  }
   render() {
-    const { dataProvider } = this.props;
+    const { dataProvider } = this.props
 
     return (
-      <div style={{ height: "100vh", width: "100%" }}>
+      <div style={{ height: '100vh', width: '100%' }}>
         <GoogleMapReact
           bootstrapURLKeys={{
-            key: "AIzaSyAmQ7APQAvy5cbGkGba-KZNT_VHHlLddeI"
+            key: process.env.REACT_APP_GOOGLE_MAPS
           }}
           center={this.state.center}
           zoom={this.state.zoom}
@@ -86,14 +86,14 @@ class Live extends React.Component {
           ))}
         </GoogleMapReact>
       </div>
-    );
+    )
   }
 }
 const mapStateToProps = state => ({
   version: state.admin.ui.viewVersion
-});
+})
 
 export default compose(
   connect(mapStateToProps),
   withDataProvider
-)(Live);
+)(Live)
