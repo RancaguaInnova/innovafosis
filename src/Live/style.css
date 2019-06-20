@@ -1,0 +1,14 @@
+.marker {
+    font-size: 16px;
+    color: blueviolet;
+    border: 1px solid #f44336;
+    background: #f44336;
+    text-align: center;
+    vertical-align: center;
+    cursor: pointer;
+    font-weight: bold;
+    padding-top: 4px;
+    border-radius: 20px;
+    width: 80px;
+    min-height: 20px;
+}
