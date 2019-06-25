@@ -30,6 +30,7 @@ class Live extends React.Component {
     this.fetchData()
   }
   componentDidUpdate(prevProps) {
+    console.log(prevProps)
     if (this.props.version !== prevProps.version) {
       this.fetchData()
     }
@@ -43,7 +44,7 @@ class Live extends React.Component {
     const { dataProvider } = this.props
     try {
       const { data: Events } = await dataProvider(GET_LIST, 'Event', {
-        filter: { state: 'pendiente' },
+        filter: { state: 'Pendiente' },
         sort: {
           field: 'date',
           order: 'DESC'

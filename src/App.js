@@ -1,10 +1,14 @@
 import { Admin, EditGuesser, ListGuesser, Login, Resource, ShowGuesser } from 'react-admin'
 import { EventEdit, EventList, EventShow } from './event'
+import {
+  GeneraldiscussionEdit,
+  GeneraldiscussionList,
+  GeneraldiscussionShow
+} from './community/GeneralDiscussion'
 import { ProfessionalEdit, ProfessionalList, ProfessionalShow } from './Professional'
 import { VictimEdit, VictimList, VictimShow } from './victim'
 
 import { AuthProvider } from './component/firebase/'
-import Configuration from './configuration/Configuration'
 import { FirebaseDataProvider } from 'react-admin-firebase'
 import { Layout } from './layout'
 import Live from './Live'
@@ -24,10 +28,13 @@ const firebaseConfig = {
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#CC333F'
+      main: '#2FC1D6'
     },
     secondary: {
-      main: '#00A0B0'
+      main: '#0B3454'
+    },
+    error: {
+      main: '#FF5E5B'
     }
   }
 })
@@ -79,7 +86,6 @@ const App = () => (
       edit={ProfessionalEdit}
       show={ProfessionalShow}
     />
-    <Resource name='Configuration' list={Configuration} options={{ label: 'Configuración' }} />
     <Resource name='Live' options={{ label: 'Eventos en vivo' }} list={Live} />
     <Resource
       name='Announcements'
@@ -105,6 +111,13 @@ const App = () => (
     <Resource
       name='GeneralDiscussion'
       options={{ label: 'Discusión General' }}
+      list={GeneraldiscussionList}
+      edit={EditGuesser}
+      show={ShowGuesser}
+    />
+    <Resource
+      name='GeneralDiscussion-chats'
+      options={{ label: 'chats' }}
       list={ListGuesser}
       edit={EditGuesser}
       show={ShowGuesser}

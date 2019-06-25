@@ -9039,10 +9039,10 @@ ra-data-json-server@^2.0.0:
     query-string "~5.1.1"
     ra-core "^2.9.2"
 
-ra-input-rich-text@^2.9.2:
-  version "2.9.2"
-  resolved "https://registry.yarnpkg.com/ra-input-rich-text/-/ra-input-rich-text-2.9.2.tgz#620779637bf915c2573fa62807bcdc3579340cbe"
-  integrity sha512-79tsKANg+paCLfiRvW9TXvUSA+wCDdlcEp0fKb6NrB5Gft2qZMSEc7kAp1l0fKCXsqucjh3EkK1eQPlG4B5t4g==
+ra-input-rich-text@^2.9.3:
+  version "2.9.3"
+  resolved "https://registry.yarnpkg.com/ra-input-rich-text/-/ra-input-rich-text-2.9.3.tgz#8a9f62002c3678239505faa8c3dad2dba6198eb3"
+  integrity sha512-YKfoKH9Xsw9ySRdpNRIXNLFoHNKAi4iULz05MKuYikCj33XLOV4jaTc3wSdErFxtUXcCp8GJ6zHFDGB4uCDKAA==
   dependencies:
     lodash "~4.17.5"
     prop-types "~15.6.1"

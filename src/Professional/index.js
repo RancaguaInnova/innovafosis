@@ -15,9 +15,12 @@ import {
 import { PostActions } from '../botons'
 import React from 'react'
 
+const postRowStyle = (record, index) => ({
+  backgroundColor: index % 2 === 0 ? '#efe' : 'white'
+})
 export const ProfessionalList = props => (
   <List {...props} title='Listado profesionales' actions={<PostActions />}>
-    <Datagrid rowClick='edit'>
+    <Datagrid rowClick='edit' rowStyle={postRowStyle}>
       <TextField source='name' label='Nombres' />
       <TextField source='lastName' label='Apellidos' />
       <DateField source='birthdate' label='Fecha de Nacimiento' />
