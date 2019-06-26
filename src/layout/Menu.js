@@ -1,3 +1,5 @@
+import './style.css'
+
 import {
   AddAlert,
   AlarmRounded,
@@ -14,9 +16,10 @@ import {
   Person,
   Portrait
 } from '@material-ui/icons'
-import { MenuItemLink, Responsive } from 'react-admin'
+import { DashboardMenuItem, MenuItemLink, Responsive } from 'react-admin'
 import React, { Component } from 'react'
 
+import Badge from '@material-ui/core/Badge'
 import PropTypes from 'prop-types'
 import SettingsIcon from '@material-ui/icons/Settings'
 import SubMenu from './SubMenu'
@@ -43,7 +46,14 @@ class Menu extends Component {
   render() {
     const { onMenuClick, open, logout } = this.props
     return (
-      <div>
+      <div className='Menu'>
+        <MenuItemLink
+          to={`/Dashboard`}
+          key='Dashboard'
+          primaryText='Dashboard'
+          onClick={onMenuClick}
+          leftIcon={<AddAlert />}
+        />
         <SubMenu
           handleToggle={() => this.handleToggle('menuVictim')}
           isOpen={this.state.menuVictim}
@@ -51,16 +61,23 @@ class Menu extends Component {
           key='Victimas Y Eventos'
           name='Emergencia'
           label='Victimas Y Eventos'
-          icon={<AddAlert />}
+          icon={
+            <Badge badgeContent={3} color='primary'>
+              <AddAlert />{' '}
+            </Badge>
+          }
         >
           <MenuItemLink
             to={`/Live`}
             key='Eventos en vivo'
             primaryText='Eventos en vivo'
             onClick={onMenuClick}
-            leftIcon={<LiveTv />}
+            leftIcon={
+              <Badge badgeContent={3} color='primary'>
+                <LiveTv />
+              </Badge>
+            }
           />
-
           <MenuItemLink
             to={`/Event`}
             key='Eventos'
@@ -112,31 +129,14 @@ class Menu extends Component {
             onClick={onMenuClick}
             leftIcon={<Feedback />}
           />
-          <SubMenu
-            handleToggle={() => this.handleToggle('menuGeneralDiscussion')}
-            isOpen={this.state.menuGeneralDiscussion}
-            sidebarIsOpen={open}
-            key='GeneralDiscussion'
-            name='Discusión General'
-            label='Discusión General'
-            icon={<ModeComment />}
-          >
-            <MenuItemLink
-              key='GeneralDiscussion Temas'
-              to={`/GeneralDiscussion`}
-              primaryText='Temas'
-              onClick={onMenuClick}
-              leftIcon={<Forum />}
-            />
-            <MenuItemLink
-              key='Chats'
-              name='Chats'
-              to={`/GeneralDiscussion-chats`}
-              primaryText='Chats'
-              onClick={onMenuClick}
-              leftIcon={<ChatBubble />}
-            />
-          </SubMenu>
+
+          <MenuItemLink
+            key='GeneralDiscussion Temas'
+            to={`/GeneralDiscussion`}
+            primaryText='Discusión General'
+            onClick={onMenuClick}
+            leftIcon={<ModeComment />}
+          />
         </SubMenu>
         <SubMenu
           handleToggle={() => this.handleToggle('menuVictim')}
@@ -157,22 +157,16 @@ class Menu extends Component {
           label='Actividades'
           icon={<LocalActivity />}
         />
-
-        <Responsive
-          small={logout}
-          medium={null} // Pass null to render nothing on larger devices
-        />
+        <Responsive small={logout} medium={null} />
       </div>
     )
   }
 }
-
 const mapStateToProps = state => ({
   open: state.admin.ui.sidebarOpen,
   theme: state.theme,
   locale: state.i18n.locale
 })
-
 const enhance = compose(
   withRouter,
   connect(

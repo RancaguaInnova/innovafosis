@@ -30,7 +30,6 @@ class Live extends React.Component {
     this.fetchData()
   }
   componentDidUpdate(prevProps) {
-    console.log(prevProps)
     if (this.props.version !== prevProps.version) {
       this.fetchData()
     }
@@ -72,9 +71,6 @@ class Live extends React.Component {
           }}
           center={this.state.center}
           zoom={this.state.zoom}
-          refresh
-          onChange={this._onBoundsChange}
-          {...this.props}
         >
           {this.state.Events.map((item, key) => (
             <Marker
@@ -90,11 +86,5 @@ class Live extends React.Component {
     )
   }
 }
-const mapStateToProps = state => ({
-  version: state.admin.ui.viewVersion
-})
 
-export default compose(
-  connect(mapStateToProps),
-  withDataProvider
-)(Live)
+export default compose(withDataProvider)(Live)

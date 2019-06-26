@@ -23,7 +23,7 @@ import React from 'react'
 import RichTextInput from 'ra-input-rich-text'
 
 const postRowStyle = (record, index) => ({
-  backgroundColor: index % 2 === 0 ? '#efe' : 'white'
+  backgroundColor: index % 2 === 0 ? '#DAF7FA' : 'white'
 })
 const PostFilter = props => (
   <Filter {...props}>
@@ -112,9 +112,7 @@ export const EventShow = props => (
       <BooleanField source='assistedBySupportNetwork' label='Asistido por red de apoyo' />
       <BooleanField source='reportPolice' label='Genera Denuncia' />
       <TextField source='reportNumber' label='Número de  Denuncia' />
-
       <TextField source='state' label='Estado' />
-
       <TextField source='eventType' label='Tipo Evento' />
       <ReferenceField label='Victima' source='victimId' reference='Victim' linkType='show'>
         <TextField source='Documento' />

@@ -136,15 +136,6 @@ function Marker(props) {
     setState({ ...state, right: false })
   }
 
-  const CustomToolbar = props => (
-    <Toolbar {...props}>
-      <SaveButton undoable={false} onClick={handleSaveClick} className={classes.SaveButton} />
-      <Button className={classes.ChatButton} color='secondary' onClick={Chat}>
-        Abrir Chat
-      </Button>
-    </Toolbar>
-  )
-
   const toggleDrawer = (side, open) => event => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return
@@ -212,7 +203,7 @@ function Marker(props) {
             </Grid>
           </div>
           <Edit undoable={false} resource='Event' id={state.postDefaultValue.id} basePath={'/Live'}>
-            <SimpleForm toolbar={<CustomToolbar />}>
+            <SimpleForm>
               <DisabledInput source='id' label='id' className={classes.input} />
               <DateTimeInput
                 source='date'
@@ -285,19 +276,5 @@ function Marker(props) {
     </div>
   )
 }
-const mapStateToProps = state => ({
-  open: state.admin.ui.sidebarOpen,
-  theme: state.theme,
-  locale: state.i18n.locale,
-  version: state.admin.ui.viewVersion
-})
 
-const enhance = compose(
-  withRouter,
-  connect(
-    mapStateToProps,
-    {}
-  )
-)
-
-export default enhance(Marker)
+export default Marker

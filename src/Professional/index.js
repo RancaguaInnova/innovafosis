@@ -16,7 +16,7 @@ import { PostActions } from '../botons'
 import React from 'react'
 
 const postRowStyle = (record, index) => ({
-  backgroundColor: index % 2 === 0 ? '#efe' : 'white'
+  backgroundColor: index % 2 === 0 ? '#DAF7FA' : 'white'
 })
 export const ProfessionalList = props => (
   <List {...props} title='Listado profesionales' actions={<PostActions />}>

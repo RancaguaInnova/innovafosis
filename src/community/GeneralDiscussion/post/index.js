@@ -11,12 +11,12 @@ import TableRow from '@material-ui/core/TableRow'
 import compose from 'recompose/compose'
 import { connect } from 'react-redux'
 
-class Chats extends React.Component {
+class Post extends React.Component {
   constructor(props) {
     super(props)
     console.log(props)
     this.state = {
-      ChatsData: []
+      PostData: []
     }
   }
   componentDidMount() {
@@ -35,7 +35,7 @@ class Chats extends React.Component {
   async fetchEvents() {
     const { dataProvider, id } = this.props
     try {
-      const { data: ChatsData } = await dataProvider(GET_LIST, 'GeneralDiscussion-chats', {
+      const { data: PostData } = await dataProvider(GET_LIST, 'GeneralDiscussion-Post', {
         filter: { GeneralDiscussionId: id },
         sort: {
           field: 'date',
@@ -47,14 +47,14 @@ class Chats extends React.Component {
         }
       })
 
-      this.setState({ ChatsData })
+      this.setState({ PostData })
     } catch (e) {}
   }
   render() {
     const { dataProvider } = this.props
     return (
       <div>
-        {this.state.ChatsData && (
+        {this.state.PostData && (
           <Paper>
             <Table>
               <TableHead>
@@ -66,7 +66,7 @@ class Chats extends React.Component {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {this.state.ChatsData.map((item, key) => (
+                {this.state.PostData.map((item, key) => (
                   <TableRow key={item.id}>
                     <TableCell>{item.comment}</TableCell>
                     <TableCell>{item.date}</TableCell>
@@ -88,4 +88,4 @@ const mapStateToProps = state => ({
 export default compose(
   connect(mapStateToProps),
   withDataProvider
-)(Chats)
+)(Post)

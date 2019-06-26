@@ -7,14 +7,15 @@ import {
 } from './community/GeneralDiscussion'
 import { ProfessionalEdit, ProfessionalList, ProfessionalShow } from './Professional'
 import { VictimEdit, VictimList, VictimShow } from './victim'
+import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles'
 
 import { AuthProvider } from './component/firebase/'
+import Dashboard from './dashboard/Dashboard'
 import { FirebaseDataProvider } from 'react-admin-firebase'
 import { Layout } from './layout'
 import Live from './Live'
 import React from 'react'
 import addUploadCapabilities from './addUploadCapabilities'
-import { createMuiTheme } from '@material-ui/core/styles'
 import spanishMessages from 'aor-language-spanish'
 
 const firebaseConfig = {
@@ -38,6 +39,8 @@ const theme = createMuiTheme({
     }
   }
 })
+//theme = responsiveFontSizes(theme)
+
 const messages = {
   es: spanishMessages
 }
@@ -59,12 +62,12 @@ const App = () => (
   <Admin
     locale='es'
     i18nProvider={i18nProvider}
-    theme={theme}
     dataProvider={addUploadCapabilities(dataProvider)}
     authProvider={AuthProvider(authConfig)}
     loginPage={LoginPage}
     appLayout={Layout}
   >
+    <Resource name='Dashboard' options={{ label: 'Dashboard' }} list={Dashboard} />
     <Resource
       name='Event'
       list={EventList}
@@ -116,8 +119,8 @@ const App = () => (
       show={ShowGuesser}
     />
     <Resource
-      name='GeneralDiscussion-chats'
-      options={{ label: 'chats' }}
+      name='GeneralDiscussion-post'
+      options={{ label: 'Post' }}
       list={ListGuesser}
       edit={EditGuesser}
       show={ShowGuesser}
