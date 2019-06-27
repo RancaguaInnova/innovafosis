@@ -90,10 +90,13 @@ const useStyles = makeStyles(theme => ({
   },
   fixedHeight: {
     height: 300
+  },
+  fixedHeightPaperInformation: {
+    height: 150
   }
 }))
 
-export default function Dashboard() {
+export default function Dashboard(props) {
   const classes = useStyles()
   const [open, setOpen] = React.useState(true)
   const handleDrawerOpen = () => {
@@ -103,29 +106,45 @@ export default function Dashboard() {
     setOpen(false)
   }
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight)
+  const fixedHeightPaperInformation = clsx(classes.paper, classes.fixedHeightPaperInformation)
 
   return (
     <div className={classes.root}>
       <main className={classes.content}>
         <Container maxWidth='lg' className={classes.container}>
           <Grid container spacing={3}>
-            <Grid item xs={12} md={8} lg={6}>
+            <Grid item xs={11} md={11} lg={6}>
               <Paper className={fixedHeightPaper}>
                 <ChartDayEvent />
               </Paper>
             </Grid>
-            <Grid item xs={12} md={8} lg={6}>
+            <Grid item xs={11} md={11} lg={6}>
               <Paper className={fixedHeightPaper}>
                 <ChartMonth />
               </Paper>
             </Grid>
-            <Grid item xs={12}>
-              <Event />
+            <Grid item xs={11} md={11} lg={12}>
+              <Event {...props} />
             </Grid>
           </Grid>
           <Grid container spacing={3}>
-            <Grid item xs={12}>
-              <Paper className={fixedHeightPaper}>
+            <Grid item xs={3} md={3} lg={3}>
+              <Paper className={fixedHeightPaperInformation}>
+                <div>jdkasjd</div>
+              </Paper>
+            </Grid>
+            <Grid item xs={3} md={3} lg={3}>
+              <Paper className={fixedHeightPaperInformation}>
+                <div>jdkasjd</div>
+              </Paper>
+            </Grid>
+            <Grid item xs={3} md={3} lg={3}>
+              <Paper className={fixedHeightPaperInformation}>
+                <div>jdkasjd</div>
+              </Paper>
+            </Grid>
+            <Grid item xs={3} md={3} lg={3}>
+              <Paper className={fixedHeightPaperInformation}>
                 <div>jdkasjd</div>
               </Paper>
             </Grid>

@@ -10,6 +10,7 @@ import { VictimEdit, VictimList, VictimShow } from './victim'
 import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles'
 
 import { AuthProvider } from './component/firebase/'
+import Chat from './messenger'
 import Dashboard from './dashboard/Dashboard'
 import { FirebaseDataProvider } from 'react-admin-firebase'
 import { Layout } from './layout'
@@ -26,20 +27,6 @@ const firebaseConfig = {
   projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
   messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID
 }
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: '#2FC1D6'
-    },
-    secondary: {
-      main: '#0B3454'
-    },
-    error: {
-      main: '#FF5E5B'
-    }
-  }
-})
-//theme = responsiveFontSizes(theme)
 
 const messages = {
   es: spanishMessages
@@ -125,6 +112,7 @@ const App = () => (
       edit={EditGuesser}
       show={ShowGuesser}
     />
+    <Resource name='Chat' options={{ label: 'Chat' }} list={Chat} />
   </Admin>
 )
 export default App

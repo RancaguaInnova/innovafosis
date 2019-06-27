@@ -26,7 +26,25 @@ import SubMenu from './SubMenu'
 import compose from 'recompose/compose'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import { withStyles } from '@material-ui/core/styles'
 
+const styles = {
+  listItem: {
+    paddingLeft: '1rem'
+  },
+  listItemText: {
+    paddingLeft: 2,
+    fontSize: '1rem'
+  },
+  sidebarIsOpen: {
+    paddingLeft: 25,
+    transition: 'padding-left 195ms cubic-bezier(0.4, 0, 0.6, 1) 0ms'
+  },
+  sidebarIsClosed: {
+    paddingLeft: 0,
+    transition: 'padding-left 195ms cubic-bezier(0.4, 0, 0.6, 1) 0ms'
+  }
+}
 class Menu extends Component {
   state = {
     menuVictim: false,
@@ -99,6 +117,13 @@ class Menu extends Component {
             onClick={onMenuClick}
             leftIcon={<Person />}
           />
+          <MenuItemLink
+            key='Chat'
+            to={`/Chat`}
+            primaryText='Chat'
+            onClick={onMenuClick}
+            leftIcon={<Forum />}
+          />
         </SubMenu>
         <SubMenu
           handleToggle={() => this.handleToggle('menuForo')}
@@ -143,8 +168,8 @@ class Menu extends Component {
           isOpen={this.state.menuVictim}
           sidebarIsOpen={open}
           key='Cursos'
-          name='Cursos'
-          label='Cursos'
+          name='Aula'
+          label='Aula'
           Notes
           icon={<Notes />}
         />
@@ -169,8 +194,10 @@ const mapStateToProps = state => ({
 })
 const enhance = compose(
   withRouter,
+  withStyles(styles),
   connect(
     mapStateToProps,
+
     {}
   )
 )

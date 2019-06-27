@@ -33,14 +33,27 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-function Event() {
+function Event(props) {
+  console.log(props)
   const [open, setOpen] = React.useState(true)
 
   const classes = useStyles()
 
   return (
     <div>
-      <List basePath='/Dashboard' resource='Event' location='' title='Dashboard'>
+      <List
+        resource='Event'
+        title='Dashboard'
+        basePath={props.basePath}
+        hasCreate={false}
+        hasEdit={false}
+        hasList={false}
+        hasShow={false}
+        location={props.location}
+        match={props.match}
+        option={props.options}
+        permissions={props.permissions}
+      >
         <Datagrid>
           <DateField source='date' label='Fecha' options={{ format: 'DD/MM/YYYY, HH:mm:ss' }} />
           <TextField source='state' label='Estado' />

@@ -1,20 +1,15 @@
-import React, { Component } from 'react';
-import './Compose.css';
+import './Compose.css'
+
+import React, { Component } from 'react'
 
 export default class Compose extends Component {
   render() {
     return (
-      <div className="compose">
-        <input
-          type="text"
-          className="compose-input"
-          placeholder="Type a message, @name"
-        />
+      <div className='compose'>
+        <input type='text' className='compose-input' placeholder='Agregar Mensaje' />
 
-        {
-          this.props.rightItems
-        }
+        {this.props.rightItems}
       </div>
-    );
+    )
   }
 }

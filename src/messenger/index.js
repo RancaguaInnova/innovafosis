@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
-import MessengerI from '../Messenger'
+import MessengerI from './Messenger'
 
-export default class Messenger extends Component {
+export default class Chat extends Component {
   render() {
     return <MessengerI />
   }
