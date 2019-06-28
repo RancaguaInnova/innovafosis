@@ -113,17 +113,17 @@ export default function Dashboard(props) {
       <main className={classes.content}>
         <Container maxWidth='lg' className={classes.container}>
           <Grid container spacing={3}>
-            <Grid item xs={11} md={11} lg={6}>
+            <Grid item xs={12} md={12} lg={6}>
               <Paper className={fixedHeightPaper}>
                 <ChartDayEvent />
               </Paper>
             </Grid>
-            <Grid item xs={11} md={11} lg={6}>
+            <Grid item xs={12} md={12} lg={6}>
               <Paper className={fixedHeightPaper}>
                 <ChartMonth />
               </Paper>
             </Grid>
-            <Grid item xs={11} md={11} lg={12}>
+            <Grid item xs={12} md={12} lg={12}>
               <Event {...props} />
             </Grid>
           </Grid>

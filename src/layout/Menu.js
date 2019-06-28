@@ -3,6 +3,7 @@ import './style.css'
 import {
   AddAlert,
   AlarmRounded,
+  Book,
   ChatBubble,
   Comment,
   EventNote,
@@ -49,7 +50,9 @@ class Menu extends Component {
   state = {
     menuVictim: false,
     menuForo: false,
-    menuGeneralDiscussion: false
+    menuGeneralDiscussion: false,
+    menuAula: false,
+    menuActivity: false
   }
 
   static propTypes = {
@@ -81,7 +84,7 @@ class Menu extends Component {
           label='Victimas Y Eventos'
           icon={
             <Badge badgeContent={3} color='primary'>
-              <AddAlert />{' '}
+              <AddAlert />
             </Badge>
           }
         >
@@ -164,17 +167,25 @@ class Menu extends Component {
           />
         </SubMenu>
         <SubMenu
-          handleToggle={() => this.handleToggle('menuVictim')}
-          isOpen={this.state.menuVictim}
+          handleToggle={() => this.handleToggle('menuAula')}
+          isOpen={this.state.menuAula}
           sidebarIsOpen={open}
-          key='Cursos'
+          key='Aula'
           name='Aula'
           label='Aula'
           Notes
-          icon={<Notes />}
-        />
+          icon={<Book />}
+        >
+          <MenuItemLink
+            to={`/Course`}
+            key='Cursos'
+            primaryText='Cursos'
+            onClick={onMenuClick}
+            leftIcon={<Book />}
+          />
+        </SubMenu>
         <SubMenu
-          handleToggle={() => this.handleToggle('menuVictim')}
+          handleToggle={() => this.handleToggle('menuActivity')}
           isOpen={this.state.menuVictim}
           sidebarIsOpen={open}
           key='Actividades'

@@ -15,13 +15,13 @@ export const darkTheme = {
 export const lightTheme = {
   palette: {
     primary: {
-      main: '#550A89'
+      main: '#d81b60'
     },
     secondary: {
-      main: '#0E7180'
+      main: '#00838f'
     },
     error: {
-      main: '#FF3839'
+      main: '#b71c1c'
     }
   }
 }

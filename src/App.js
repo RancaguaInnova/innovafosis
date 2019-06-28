@@ -1,4 +1,5 @@
 import { Admin, EditGuesser, ListGuesser, Login, Resource, ShowGuesser } from 'react-admin'
+import { CourseEdit, CourseList, CourseShow } from './Course'
 import { EventEdit, EventList, EventShow } from './event'
 import {
   GeneraldiscussionEdit,
@@ -111,6 +112,13 @@ const App = () => (
       list={ListGuesser}
       edit={EditGuesser}
       show={ShowGuesser}
+    />
+    <Resource
+      name='Course'
+      options={{ label: 'Cursos' }}
+      list={CourseList}
+      edit={CourseEdit}
+      show={CourseShow}
     />
     <Resource name='Chat' options={{ label: 'Chat' }} list={Chat} />
   </Admin>

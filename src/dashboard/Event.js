@@ -24,7 +24,6 @@ import {
 
 import React from 'react'
 import compose from 'recompose/compose'
-import { connect } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
