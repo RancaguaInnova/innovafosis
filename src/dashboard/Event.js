@@ -1,24 +1,11 @@
 import {
   BooleanField,
-  BooleanInput,
   Datagrid,
   DateField,
-  DateInput,
-  DateTimeInput,
-  DisabledInput,
-  Edit,
-  Filter,
   FunctionField,
   List,
   ReferenceField,
-  SaveButton,
-  SelectInput,
-  Show,
-  SimpleForm,
-  SimpleShowLayout,
   TextField,
-  TextInput,
-  Toolbar,
   withDataProvider
 } from 'react-admin'
 
@@ -33,9 +20,6 @@ const useStyles = makeStyles(theme => ({
 }))
 
 function Event(props) {
-  console.log(props)
-  const [open, setOpen] = React.useState(true)
-
   const classes = useStyles()
 
   return (

@@ -120,6 +120,14 @@ const App = () => (
       edit={CourseEdit}
       show={CourseShow}
     />
+    <Resource
+      name='workshops'
+      options={{ label: 'Talleres' }}
+      list={ListGuesser}
+      edit={EditGuesser}
+      show={ShowGuesser}
+    />
+
     <Resource name='Chat' options={{ label: 'Chat' }} list={Chat} />
   </Admin>
 )

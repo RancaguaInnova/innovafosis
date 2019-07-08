@@ -1,3 +1,5 @@
+import './style.css'
+
 import {
   BooleanField,
   BooleanInput,
@@ -17,16 +19,15 @@ import {
   TextField,
   TextInput
 } from 'react-admin'
-import React, { Fragment } from 'react'
 
-import { Drawer } from '@material-ui/core'
 import { PostActions } from '../botons'
+import React from 'react'
 import RichTextInput from 'ra-input-rich-text'
-import { Route } from 'react-router'
 
 const postRowStyle = (record, index) => ({
-  backgroundColor: index % 2 === 0 ? '#DAF7FA' : 'white'
+  backgroundColor: index % 2 === 0 ? 'white' : '#e8eaf6'
 })
+
 const PostFilter = props => (
   <Filter {...props}>
     <DateInput source='date' label='Fecha' options={{ format: 'DD/MM/YYYY' }} alwaysOn />

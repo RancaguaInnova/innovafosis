@@ -13,8 +13,11 @@ import {
 } from 'react-admin'
 
 import Avatar from '@material-ui/core/Avatar'
+import Box from '@material-ui/core/Box'
 import Button from '@material-ui/core/Button'
 import CloseIcon from '@material-ui/icons/Close'
+import Container from '@material-ui/core/Container'
+import CssBaseline from '@material-ui/core/CssBaseline'
 import Drawer from '@material-ui/core/Drawer'
 import Grid from '@material-ui/core/Grid'
 import IconButton from '@material-ui/core/IconButton'
@@ -63,8 +66,7 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: '1em',
-    backgroundColor: '#00A0B0'
+    padding: '1em'
   },
   input: {
     width: '100%'
@@ -144,7 +146,7 @@ function Marker(props) {
   }
 
   return (
-    <div>
+    <Container>
       <div>
         {(() => {
           switch (state.postDefaultValue.eventType) {
@@ -185,13 +187,13 @@ function Marker(props) {
       </div>
 
       <Drawer open={state.right} onClose={toggleDrawer('right', false)} anchor='right'>
-        <div className={classes.root}>
-          <div className={classes.title}>
+        <Box fixed>
+          <Box className={classes.title} color='primary'>
             <Typography variant='h4'>Detalle del evento</Typography>
             <IconButton onClick={toggleDrawer('right', false)}>
               <CloseIcon />
             </IconButton>
-          </div>
+          </Box>
           <div>
             <Grid container alignItems='center'>
               <Avatar
@@ -254,26 +256,9 @@ function Marker(props) {
               />
             </SimpleForm>
           </Edit>
-        </div>
-        <div>
-          <Modal
-            aria-labelledby='simple-modal-title'
-            aria-describedby='simple-modal-description'
-            open={open}
-            onClose={handleClose}
-          >
-            <div style={modalStyle} className={classes.paper}>
-              <Typography variant='h6' id='modal-title' className={classes.chatTitle}>
-                Chat de ayuda
-              </Typography>
-              <Typography variant='subtitle1' id='simple-modal-description'>
-                Hola necesito ayuda
-              </Typography>
-            </div>
-          </Modal>
-        </div>
+        </Box>
       </Drawer>
-    </div>
+    </Container>
   )
 }
 

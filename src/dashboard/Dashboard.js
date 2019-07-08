@@ -98,13 +98,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function Dashboard(props) {
   const classes = useStyles()
-  const [open, setOpen] = React.useState(true)
-  const handleDrawerOpen = () => {
-    setOpen(true)
-  }
-  const handleDrawerClose = () => {
-    setOpen(false)
-  }
+
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight)
   const fixedHeightPaperInformation = clsx(classes.paper, classes.fixedHeightPaperInformation)
 

@@ -27,7 +27,7 @@ export default class ConversationList extends Component {
           return {
             photo: result.picture.large,
             name: `${result.name.first} ${result.name.last}`,
-            text: 'Hola',
+            text: 'sdas',
             email: `${result.name.first} ${result.email}`,
             phone: `${result.name.first} ${result.phone}`,
             cell: `${result.name.first} ${result.cell}`
